@@ -7,25 +7,24 @@ class ApiLadrillos{
 
     function getAll(){
         $ladrillo = new Ladrillo();
-        $ladrillos = array();
-        $ladrillos["items"] = array();
+        $items=[];
 
         $res = $ladrillo->obtenerLadrillos();
 
         if($res->rowCount()){
             while ($row = $res->fetch(PDO::FETCH_ASSOC)){
     
-                $item=array(
+                $item=[
                     "idLadrillo" => $row['idLadrillo'],
                     "propietario" => $row['propietario'],
                     "propiedad" => $row['propiedad'],
                     "valor" => $row['valor'],
                     "estado" => $row['estado'],
-                );
-                array_push($ladrillos["items"], $item);
+                ];
+                array_push($items, $item);
             }
         
-            echo json_encode($ladrillos);
+            echo json_encode(['statuscode' => 200,'items' =>$items]);
         }else{
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
@@ -71,6 +70,7 @@ class ApiLadrillos{
         $ladrillo = new Ladrillo();
         $res = $ladrillo->eliminarLadrillo($item);
     }
+    
 
 }
 

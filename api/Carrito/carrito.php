@@ -21,6 +21,23 @@ class Carrito extends DB{
         $query = $this->connect()->query("DELETE FROM carrito WHERE idUsuario='$idUsuario'");
         return $query;
     }
+    public function getItemsByCategory($category){
+        $query = $this->connect()->prepare('SELECT * FROM items WHERE categoria = :cat LIMIT 0,12');
+        $query->execute(['cat' => $category]);
+        $items = [];
+        
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            $item = [
+                    'id'        => $row['id'],
+                    'nombre'    => $row['nombre'],
+                    'precio'    => $row['precio'],
+                    'categoria' => $row['categoria'],
+                    'imagen'    => $row['imagen']
+                    ];
+            array_push($items, $item);
+        }
+        return $items;
+    }
 
 
 }
