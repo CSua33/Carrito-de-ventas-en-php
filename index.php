@@ -35,6 +35,8 @@
         arreglo=Array.from(array);
         //Este hash tiene como finalidad eliminar objetos repetidos en el arreglo
         //no funciona correctamente
+        //hay que cambiar el hash set por un hash map ya que hash set no tiene dos elementos
+        //como tal
         var hash = {};
         arreglo = arreglo.filter(function(current) {
         var exists = !hash[current.id];
@@ -45,10 +47,7 @@
         console.log(arreglo);
         objeto.arreglo = arreglo;
         let result = JSON.stringify(objeto);
-        console.log(result);
-
-        
-
+        console.log(result);  
     }   
     </script>
 </body>

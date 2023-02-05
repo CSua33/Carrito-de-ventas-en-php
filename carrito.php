@@ -9,12 +9,7 @@
 </head>
 <body>
         <?php
-        $response = json_decode(file_get_contents('http://localhost/backendChallenge100Ladrillos/backendChallenge100Ladrillos/index.php'),true);
-        var_dump($response);
-       
-            foreach($response['items'] as $item){
-                include('layout/items.php');
-            }
+
 
         ?>
 

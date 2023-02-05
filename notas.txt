@@ -1,5 +1,5 @@
 -la tabla carrito esta en el proyecto pero como tal no es necesaria porque en un caso real
-el cliente no tiene acceso a la bd para eso
+el cliente no tiene acceso a la bd para eso 
 -el paso anterior se soluciona porque cree un json donde se van agregando los productos 
 del carrito
 -hay que poder enviar el json al php de la vista del carrito
@@ -8,4 +8,6 @@ del carrito
 	.los terminos deben tener un boton que permita atualizar un json en la api
 -hay que subir el json a la api para que esta interactue con la bd
 -la api tiene que recibir el json y poder modificar la bd
+-el archivo session tiene como finalidad usar los datos de la sesion para 
+el carrito pero lo complicado es implementarlo con la api rest
 
