@@ -1,24 +1,43 @@
+
 <?php
     include_once 'apipedidos.php';
-  
-    $api = new ApiPedidos();
-    //Mostrar todos los elementos
-    $api->getAll();
-    echo "<br/>";
+    /*if(isset($_GET['mostrar'])){
+        $api = new ApiPedidos();
+        //Mostrar todos los elementos
+        $items =$api->getAll();
+        }
+        else if(isset($_GET['get-item'])){
+            $id = $_GET['get-item'];
+        
+            if($id == ''){
+                echo json_encode(['statuscode' => 400, 
+                                    'response' => 'No hay valor para id']);    
+            }else{
+                $api = new ApiPedidos();
+                $item = $api->getPedidoById($id);
+                echo json_encode(['statuscode' => 200,  'item' => $item]);
+                
+            }
+        }*/
+   $api = new ApiPedidos();
+    //$items =$api->getAll();
     //Mostrar un elemento por id
-    $idUsuario=1;
-    $api->getPedidoById($idUsuario);
-    //Insertar un nuevo elemento
-    $idUsuario=2;
-    $idLadrillo=2;
-    echo "<br/>";
-            $item = array(
-                'idUsuario' => $idUsuario,
-                'idLadrillo' => $idLadrillo,
-            );
-     $api->addProducto($item);
+    //$idLadrillo="Carlo";
+    //$api->getPedidoById($idLadrillo);
     //Eliminar elemento
-    $id=3;
-   // $api->deleteBrick($id);
+    //$idLadrillo="Carlo";
+    //$api->deletePedido($idLadrillo);
+    //Insertar un nuevo elemento
+    $api = new ApiPedidos();
+    $propietario='Carlo';
+    $idLadrillo=4;
+            $item = array(
+                'propietario' => $propietario,
+                'idLadrillo' => $idLadrillo, 
+            );
+    $api->addProducto($item);
+
+
+
     
 ?>

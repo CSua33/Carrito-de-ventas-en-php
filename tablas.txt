@@ -1,0 +1,17 @@
+
+Ladrillo
+-id
+-dueño
+-propiedad
+-valor
+-estado
+
+Carrito
+-idPedido
+-idProducto
+-idUsuario
+-fecha
+
+ALTER TABLE `carrito`
+ADD `idPedido` int(100) NOT NULL AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE usuarios DROP COLUMN rol;

@@ -1,5 +1,5 @@
 <?php
-
+//este archivo por lo pronto no hace nada
 class Session{
 
     private $session = NULL;

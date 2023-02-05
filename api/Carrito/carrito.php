@@ -7,37 +7,21 @@ class Carrito extends DB{
         $query = $this->connect()->query('SELECT * FROM carrito');
         return $query;
     }
-    function obtenerProducto($idUsuario){
-        $query = $this->connect()->prepare('SELECT * FROM carrito WHERE idUsuario = :idUsuario');
-        $query->execute(['idUsuario' => $idUsuario]);
+    function obtenerProducto($propietario){
+        $query = $this->connect()->prepare('SELECT * FROM carrito WHERE propietario = :propietario');
+        $query->execute(['propietario' => $propietario]);
         return $query;
     }
     function nuevoProducto($pedido){
-        $query = $this->connect()->prepare('INSERT INTO carrito (idUsuario,idLadrillo) VALUES (:idUsuario,:idLadrillo)');
-        $query->execute(['idUsuario' => $pedido['idUsuario'], 'idLadrillo' => $pedido['idLadrillo']]);
+        $query = $this->connect()->prepare('INSERT INTO carrito (propietario,idLadrillo) VALUES (:propietario,:idLadrillo)');
+        $query->execute(['propietario' => $pedido['propietario'], 'idLadrillo' => $pedido['idLadrillo']]);
         return $query;
     }
-    function eliminarPedido($idUsuario){
-        $query = $this->connect()->query("DELETE FROM carrito WHERE idUsuario='$idUsuario'");
+    function eliminarPedido($propietario){
+        $query = $this->connect()->query("DELETE FROM carrito WHERE propietario='$propietario'");
         return $query;
     }
-    public function getItemsByCategory($category){
-        $query = $this->connect()->prepare('SELECT * FROM items WHERE categoria = :cat LIMIT 0,12');
-        $query->execute(['cat' => $category]);
-        $items = [];
-        
-        while($row = $query->fetch(PDO::FETCH_ASSOC)){
-            $item = [
-                    'id'        => $row['id'],
-                    'nombre'    => $row['nombre'],
-                    'precio'    => $row['precio'],
-                    'categoria' => $row['categoria'],
-                    'imagen'    => $row['imagen']
-                    ];
-            array_push($items, $item);
-        }
-        return $items;
-    }
+  
 
 
 }

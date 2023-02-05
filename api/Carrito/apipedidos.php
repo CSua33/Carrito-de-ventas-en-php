@@ -7,55 +7,49 @@ class ApiPedidos{
 
     function getAll(){
         $pedido = new Carrito();
-        $pedidos = array();
-        $pedidos["items"] = array();
+        $items=[];
 
         $res = $pedido->obtenerProductos();
 
         if($res->rowCount()){
             while ($row = $res->fetch(PDO::FETCH_ASSOC)){
     
-                $item=array(
+                $item=[
                     "idPedido" => $row['idPedido'],
-                    "idUsuario" => $row['idUsuario'],
+                    "propietario" => $row['propietario'],
                     "idLadrillo" => $row['idLadrillo'],
                     "Date_Created" => $row['Date_Created'],
-                );
-                array_push($pedidos["items"], $item);
+                ];
+                array_push($items, $item);
             }
-        
-            echo json_encode($pedidos);
+            echo json_encode(['statuscode' => 200,'items' =>$items]);
         }else{
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
     }
 
-    function getPedidoById($idUsuario){
+    function getPedidoById($propietario){
         $pedido = new Carrito();
-        $pedidos = array();
-        $pedidos["items"] = array();
+        $items=[];
 
-        $res = $pedido->obtenerProducto($idUsuario);
+        $res = $pedido->obtenerProductos();
 
-        if($res->rowCount() == 1){
-            $row = $res->fetch();
+        if($res->rowCount()){
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)){
+    
+                $item=[
+                    "idPedido" => $row['idPedido'],
+                    "propietario" => $row['propietario'],
+                    "idLadrillo" => $row['idLadrillo'],
+                    "Date_Created" => $row['Date_Created'],
+                ];
+                array_push($items, $item);
+            }
         
-            $item=array(
-                "idPedido" => $row['idPedido'],
-                "idUsuario" => $row['idUsuario'],
-                "idLadrillo" => $row['idLadrillo'],
-                "Date_Created" => $row['Date_Created'],
-            );
-            array_push($pedidos["items"], $item);
-            $this->printJSON($pedidos);
+            echo json_encode(['statuscode' => 200,'items' =>$items]);
+        }else{
+            echo json_encode(array('mensaje' => 'No hay elementos'));
         }
-        else{
-            echo "Esta vaina no funciona";
-        }
-    }
-
-    function printJSON($array){
-        echo '<code>'.json_encode($array).'</code>';
     }
 
     function addProducto($item){

@@ -1,0 +1,11 @@
+-la tabla carrito esta en el proyecto pero como tal no es necesaria porque en un caso real
+el cliente no tiene acceso a la bd para eso
+-el paso anterior se soluciona porque cree un json donde se van agregando los productos 
+del carrito
+-hay que poder enviar el json al php de la vista del carrito
+	.hay que hacer la validacion para que no se repitan los articulos en el carrito
+	.una vez pasados los datos hay que incluir una nueva vista de terminos y condiciones
+	.los terminos deben tener un boton que permita atualizar un json en la api
+-hay que subir el json a la api para que esta interactue con la bd
+-la api tiene que recibir el json y poder modificar la bd
+

@@ -4,7 +4,7 @@ include_once '../../Conexion/db.php';
 class Ladrillo extends DB{
     
     function obtenerLadrillos(){
-        $query = $this->connect()->query('SELECT * FROM ladrillo');
+        $query = $this->connect()->query("SELECT * FROM ladrillo WHERE estado='venta'");
         return $query;
     }
     function obtenerLadrillo($idLadrillo){
