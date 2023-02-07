@@ -12,3 +12,5 @@ del carrito
 el carrito pero lo complicado es implementarlo con la api rest
 -Con el uso de session se permite el traspaso de variables sin que estas se destruyan, tambien
 permite hacer el array que guardara los datos de los objetos que se agregaran al json
+-con los datos del array de session y con un json hecho en base a estos el unico problema 
+restante es el de subir dicho json a la api
