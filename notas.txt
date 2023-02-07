@@ -10,4 +10,5 @@ del carrito
 -la api tiene que recibir el json y poder modificar la bd
 -el archivo session tiene como finalidad usar los datos de la sesion para 
 el carrito pero lo complicado es implementarlo con la api rest
-
+-Con el uso de session se permite el traspaso de variables sin que estas se destruyan, tambien
+permite hacer el array que guardara los datos de los objetos que se agregaran al json
